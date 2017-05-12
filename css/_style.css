@@ -1,0 +1,159 @@
+/* font-family: "SegoeUIRegular"; */
+@font-face {
+    font-family: "SegoeUIRegular";
+    src: url("../fonts/SegoeUIRegular/SegoeUIRegular.eot");
+    src: url("../fonts/SegoeUIRegular/SegoeUIRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/SegoeUIRegular/SegoeUIRegular.woff") format("woff"),
+    url("../fonts/SegoeUIRegular/SegoeUIRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "SegoeUIBold"; */
+@font-face {
+    font-family: "SegoeUIBold";
+    src: url("../fonts/SegoeUIBold/SegoeUIBold.eot");
+    src: url("../fonts/SegoeUIBold/SegoeUIBold.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/SegoeUIBold/SegoeUIBold.woff") format("woff"),
+    url("../fonts/SegoeUIBold/SegoeUIBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+
+
+
+.trying{
+
+}
+    .trying__photo-wrapper{
+        border: 1px solid #cecece;
+        float: left;
+        margin-right: 24px;
+        position: relative;
+    }
+    .trying__photo{
+        width: 367px;
+    }
+    .trying__checkers-container{
+        float: left;
+        width: 330px;
+        position: relative;
+    }
+    .trying__checker-title{
+        font-family: "SegoeUIBold",sans-serif;
+        font-size: 14px;
+        color: #343434;
+        margin-bottom: 8px;
+    }
+    .trying__gender-checker{
+        margin-bottom: 21px;
+    }
+        .trying__gender-checker li{
+            float: left;
+        }
+        .trying__gender-checker li:first-child{
+            margin-right: 27px;
+        }
+    .trying__little-photo-container{
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        height: 155px;
+        margin-bottom: 21px;
+    }
+    .trying__little-photo-wrapper{
+        position: relative;
+        z-index: 1;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        -ms-transition-property: -ms-transform;
+        transition-property: transform;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+    }
+    .trying__little-photo-slide{
+        /*display: block;*/
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        /*border: 2px solid #ffffff;
+        padding: 3px;*/
+        margin-right: 3px;
+        cursor: pointer;
+    }
+        .trying__little-photo-slide img{
+            width: 95px;
+            border: 1px solid #ffffff;
+        }
+        .trying__little-photo-slide_active img{
+            border: 1px solid red;
+        }
+    .trying__little-photo-scrollbar{
+        border-radius: 10px;
+        position: relative;
+        -ms-touch-action: none;
+        background: rgba(0,0,0,.1);
+        position: absolute;
+        left: 1%;
+        bottom: 3px;
+        z-index: 50;
+        height: 5px;
+        width: 98%;
+    }
+
+    .trying__file-load-wrapper{
+        margin-bottom: 18px;
+    }
+    .trying__camera-btn-wrapper{
+        margin-bottom: 13px;
+    }
+    .trying__rz{
+        color: #acacac;
+        font-family: 12px;
+    }
+    .trying__rz-input{
+        display: inline-block;
+        height: 23px;
+        width: 29px;
+        border: 1px solid #cbcbcb;
+        border-radius: 7px;
+    }
+
+    .trying__controls-container{
+        background-color: #d6c8d6;
+        height: 80px;
+        padding-top: 10px;
+    }
+        .trying__controls-container a{
+            margin-left: 20px;
+        }
+
+
+
+
+.clearfix:after{
+    content: '';
+    display: table;
+    clear: both;
+}        
+
+
+
+

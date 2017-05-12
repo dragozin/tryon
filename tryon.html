@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tryon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" type="text/css" href="libs/font-awesome-4.4.0/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/bootstrap-grid-3.3.1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/swiper/css/swiper.min.css"/>
+
+</head>
+<body>
+
+
+
+<script type="text/template" id="tryon-template">    
+    <input type="hidden" name="tryon-glasses" value="content/glasses/brille_B10805_C9.png"/>
+    <div class="trying clearfix">
+                <div class="col-lg-8">
+                    <div class="trying__view-wrapper">                                
+                        <div id="container">
+                            <canvas id="image" width="625"></canvas>
+                            <video class="trying__hidden" id="video" preload="auto" loop> </video>
+                            <canvas id="overlay" width="625" ></canvas>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trying__checkers-container">
+                        <h3 class="trying__checker-title">
+                            Укажите пол:
+                        </h3>
+                        <%if (menModels || womenModels){%>
+                        <ul class="trying__gender-checker clearfix">
+                            <%if (menModels){%>
+                            <li>                        
+                                <input type="radio" class="pink-radio trying__choose-gender" data-value-id="men" name="gender" value="Мужской" checked="" id="gender-men">
+                                <label for="gender-men">Мужской</label>
+                            </li>
+                            <%}%>
+                            <%if (womenModels){%>
+                            <li>
+                                <input type="radio" class="pink-radio trying__choose-gender" data-value-id="women" name="gender" value="Женский" id="gender-women">
+                                <label for="gender-women">Женский</label>
+                            </li>
+                            <%}%>
+                        </ul>                    
+                        <div class="trying__checker-title">
+                            Выберите Ваш тип лица:
+                        </div>
+                        <%if (menModels){%>
+                        <div data-container-type="men" id="tryon-men-container" class="trying__little-photo-container">
+                            <div class="trying__little-photo-wrapper swiper-wrapper">
+                                <%var firstModel = menModels[0]%>                            
+
+                                <div data-position-left="<%=firstModel.eyePositions.length ? firstModel.eyePositions[0][0] + ',' + firstModel.eyePositions[0][1]:''%>" 
+                                    data-position-right="<%= firstModel.eyePositions.length ? firstModel.eyePositions[1][0] + ',' + firstModel.eyePositions[1][1] : ''%>" 
+                                    class="trying__little-photo-slide trying__little-photo-slide_active swiper-slide">
+                                    <a href="#" title="" alt="">
+                                        <img src="<%=firstModel.filePath%>">
+                                    </a>
+                                </div>
+                                <%for (var i = 1; i < menModels.length; i++){%>
+                                <div data-position-left="<%=menModels[i].eyePositions.length ? menModels[i].eyePositions[0][0] + ',' + menModels[i].eyePositions[0][1] : ''%>" 
+                                    data-position-right="<%= menModels[i].eyePositions.length ? menModels[i].eyePositions[1][0] + ',' + menModels[i].eyePositions[1][1] : '' %>"  
+                                    class="trying__little-photo-slide swiper-slide">
+                                    <a href="#" title="" alt="">
+                                        <img src="<%=menModels[i].filePath%>">
+                                    </a>
+                                </div>
+                                <%}%>
+                            </div>
+                            <div id="man_photo_scrollbar" class="trying__little-photo-scrollbar swiper-scrollbar">
+                                
+                             </div>
+                        </div>
+                        <%}%>
+                        <%if (womenModels){%>
+                        <div data-container-type="women" id="tryon-women-container" class="trying__little-photo-container">
+                            <div class="trying__little-photo-wrapper swiper-wrapper">                        
+                                <%for (var i = 0; i < womenModels.length; i++){%>
+                                <div data-position-left="<%= womenModels[i].eyePositions.length ? womenModels[i].eyePositions[0][0]  + ',' + womenModels[i].eyePositions[0][1] : ''%>" 
+                                    data-position-right="<%= womenModels[i].eyePositions.length ?  womenModels[i].eyePositions[1][0]  + ',' +  womenModels[i].eyePositions[1][1] : ''%>"  
+                                    class="trying__little-photo-slide swiper-slide">
+                                    <a href="#" title="Фотография модели">
+                                        <img src="<%=womenModels[i].filePath%>">
+                                    </a>
+                                </div>
+                                <%}%>
+                            </div>
+                            <div id="woman_photo_scrollbar" class="trying__little-photo-scrollbar swiper-scrollbar">
+                            </div>
+                        </div>
+                        <%}%>
+                        <%}%>
+                        <%if (localPhotos){%>
+                        <div class="trying__checker-title">
+                            Использовать личные фотографии:
+                        </div>
+                        <div class="trying__file-load-wrapper">
+                            <div class="trying__input-file-wrap">
+                                <input type="file" class="upload" id="tryon-photo-upload"/>
+                                <label for="tryon-photo-upload"> Обзор фото с компьютера </label>
+                            </div>
+                            <a href="javascript:void(0);" id="tryon-photo-upload-btn" class="text-btn"> Загрузить фото </a>
+                        </div>
+                        <%}%>
+                        <%if (webcam){%>
+                        <div class="trying__camera-btn-wrapper">
+                            <a href="javascript:void(0);" class="webcam-btn"></a>
+                        </div>
+                        <%}%>
+                        
+                        <%if (rz) {%>
+                        <div class="trying__rz">
+                            Для точного соответствия размеров укажите Ваш РЦ <input type="text" class="trying__rz-input">
+                        </div>
+                        <%}%>
+
+                        <%if (controls) {%>
+                        <div class="trying__controls-container">
+                            <a id="tryon-zoom-in" href="#">
+                                <div class="trying__control-wrap">
+                                    <span class="plus-btn"></span>
+                                </div>
+                                
+                                увеличить
+                            </a>
+                            <a id="tryon-zoom-out" href="#">
+                                <div class="trying__control-wrap">
+                                    <span class="minus-btn"></span>
+                                </div>
+                                
+                                уменьшить
+                            </a>
+                            <a id="tryon-rotate-left" href="#">
+                                <div class="trying__control-wrap">
+                                    <span class="rotate-left-btn"></span>
+                                </div>
+                                
+                                повернуть
+                            </a>
+                            <a id="tryon-rotate-right" href="#">
+                                <div class="trying__control-wrap">
+                                    <span class="rotate-right-btn"></span>
+                                </div>
+                                
+                                повернуть
+                            </a>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+
+    </div>
+</script>
+
+<!-- START TRYON-CONTAINER -->
+<div id="tryon-container" class="container">
+    
+</div>
+<!-- END TRYON-CONTAINER -->
+
+<script src="js/polyfills.js"></script>
+<script src="js/lodash.js"></script>
+<script src="js/try-on.js"></script>
+<script src="js/script.js"></script>
+<script src="libs/clmtrackr/clmtrackr.js"></script>
+<script src="libs/clmtrackr/models/model_pca_20_svm.js"></script>
+<script src="js/face-tracker.js"></script>
+<script src="js/template.js"></script>
+<script src="libs/swiper/js/swiper.min.js"></script>
+
+
+
+</body>
+</html>
